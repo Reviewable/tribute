@@ -217,9 +217,11 @@ class Tribute {
             this.current.mentionText = ''
         }
 
+        const relevantToValuesText = this.current.mentionText
         const processValues = (values) => {
-            // Tribute may not be active any more by the time the value callback returns
-            if (!this.isActive) {
+            // Tribute may not be active any more or mentionText may be different
+            // by the time the value callback returns
+            if (!this.isActive || relevantToValuesText !== this.current.mentionText) {
                 return
             }
 
