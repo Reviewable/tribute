@@ -1782,7 +1782,7 @@
       key: "selectItemAtIndex",
       value: function selectItemAtIndex(index, originalEvent) {
         index = parseInt(index);
-        if (typeof index !== "number" || isNaN(index)) return;
+        if (typeof index !== "number" || isNaN(index) || !this.current.filteredItems.length) return;
         var item = this.current.filteredItems[index];
         var content = this.current.collection.selectTemplate(item);
         if (content !== null) this.replaceText(content, originalEvent, item);
