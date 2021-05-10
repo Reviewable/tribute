@@ -298,11 +298,13 @@ class Tribute {
       this.current.mentionText = "";
     }
 
-    const processValues = values => {
-      // Tribute may not be active any more by the time the value callback returns
-      if (!this.isActive) {
-        return;
-      }
+    const relevantToValuesText = this.current.mentionText
+    const processValues = (values) => {
+        // Tribute may not be active any more or mentionText may be different
+        // by the time the value callback returns
+        if (!this.isActive || relevantToValuesText !== this.current.mentionText) {
+            return;
+        }
 
       let items = this.search.filter(this.current.mentionText, values, {
         pre: this.current.collection.searchOpts.pre || "<span>",
