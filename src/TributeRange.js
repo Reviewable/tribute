@@ -68,6 +68,7 @@ class TributeRange {
                 let menuIsOffScreenHorizontally = window.innerWidth > menuDimensions.width && (menuIsOffScreen.left || menuIsOffScreen.right)
                 let menuIsOffScreenVertically = window.innerHeight > menuDimensions.height && (menuIsOffScreen.top || menuIsOffScreen.bottom)
                 if (menuIsOffScreenHorizontally || menuIsOffScreenVertically) {
+                    if (!this.tribute.current || !this.tribute.current.element) return;
                     this.tribute.menu.style.cssText = 'display: none'
                     this.positionMenuAtCaret(scrollTo)
                 }
