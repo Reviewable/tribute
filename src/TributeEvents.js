@@ -213,6 +213,9 @@ class TributeEvents {
 
         tribute.current.collection = collectionItem;
 
+        // temp: prevent error
+        if (!tribute.current.mentionText) return;
+
         if (
           tribute.current.mentionText.length >=
             tribute.current.collection.menuShowMinLength &&
