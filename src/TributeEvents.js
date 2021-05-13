@@ -214,7 +214,7 @@ class TributeEvents {
         tribute.current.collection = collectionItem;
 
         // temp: prevent error
-        if (!tribute.current.mentionText) return;
+        if (typeof tribute.current.mentionText === "undefined") return;
 
         if (
           tribute.current.mentionText.length >=
