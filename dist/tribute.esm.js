@@ -277,6 +277,9 @@ class TributeEvents {
 
         tribute.current.collection = collectionItem;
 
+        // temp: prevent error
+        if (typeof tribute.current.mentionText === "undefined") return;
+
         if (
           tribute.current.mentionText.length >=
             tribute.current.collection.menuShowMinLength &&
