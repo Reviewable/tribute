@@ -256,7 +256,7 @@
           }
         }
 
-        if (instance.tribute.current.mentionText.length < instance.tribute.current.collection.menuShowMinLength) {
+        if (instance.tribute.current.mentionText && instance.tribute.current.mentionText.length < instance.tribute.current.collection.menuShowMinLength) {
           return;
         }
 
