@@ -1,6 +1,6 @@
 var gulp        = require('gulp');
 var plumber     = require('gulp-plumber');
-var sass        = require('gulp-sass');
+var sass        = require('gulp-sass')(require('node-sass'));
 var webserver   = require('gulp-webserver');
 var opn         = require('opn');
 var browserify  = require('browserify');
