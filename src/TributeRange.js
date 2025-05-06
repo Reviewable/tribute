@@ -501,11 +501,12 @@ class TributeRange {
         let windowLeft = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0)
         let windowTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
-        let top = 0;
-        let left = 0;
-        if (this.menuContainerIsBody) {
-          top = rect.top;
-          left = rect.left;
+        let top = rect.top;
+        let left = rect.left;
+        if (!this.menuContainerIsBody) {
+            let containerRect = this.tribute.menuContainer.getBoundingClientRect();
+            top -= containerRect.top;
+            left -= containerRect.left;
         }
 
         let coordinates = {
