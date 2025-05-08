@@ -942,11 +942,12 @@
         var doc = document.documentElement;
         var windowLeft = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
         var windowTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-        var top = 0;
-        var left = 0;
-        if (this.menuContainerIsBody) {
-          top = rect.top;
-          left = rect.left;
+        var top = rect.top;
+        var left = rect.left;
+        if (!this.menuContainerIsBody) {
+          var containerRect = this.tribute.menuContainer.getBoundingClientRect();
+          top -= containerRect.top;
+          left -= containerRect.left;
         }
         var coordinates = {
           top: top + windowTop + span.offsetTop + parseInt(computed.borderTopWidth) + parseInt(computed.fontSize) - element.scrollTop,
