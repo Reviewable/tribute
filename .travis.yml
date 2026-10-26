@@ -1,18 +1,21 @@
 ---
 language: node_js
 node_js:
-  # we recommend testing addons with the same minimum supported node version as Ember CLI
-  # so that your addon works for all apps
-  - "10"
-  - "12"
+  - "24"
 
-sudo: false
-dist: trusty
+dist: noble
 
-cache: yarn
+cache:
+  directories:
+    - $HOME/.yarn/berry/cache
 
 before_install:
+  - corepack enable
+  - corepack install
   - yarn --version
+
+install:
+  - yarn install --immutable
 
 script:
   - yarn build

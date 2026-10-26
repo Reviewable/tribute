@@ -1,12 +1,16 @@
 ## Contributing
 
-We welcome contributions to Tribute. There are many areas where we would love to see community contributions that we have outlined below, but first, let's go over how to develop in Tribute. We use [Yarn](https://yarnpkg.com/en/docs/install) to manage our NPM packages.
+We welcome contributions to Tribute. There are many areas where we would love to see community contributions that we have outlined below, but first, let's go over how to develop in Tribute. We use [Yarn 4](https://yarnpkg.com/getting-started/install), pinned in `package.json` through Corepack, to manage our NPM packages. Use Node.js 24 (see `.nvmrc`) for development and CI. This tooling version does not change the published library's runtime requirements.
 
 Install dependencies:
 
 ```sh
-yarn install
+corepack enable
+corepack install
+yarn install --immutable
 ```
+
+Yarn uses the `node-modules` linker and a five-day cooldown for new dependency resolutions. Commit `yarn.lock` changes when deliberately updating dependencies; do not create an npm lockfile. Generated Yarn cache/install state stays untracked.
 
 Run Rollup:
 
