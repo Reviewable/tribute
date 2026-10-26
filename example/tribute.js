@@ -1417,7 +1417,7 @@
       key: "ensureEditable",
       value: function ensureEditable(element) {
         if (Tribute.inputTypes().indexOf(element.nodeName) === -1) {
-          if (!element.contentEditable) {
+          if (!element.isContentEditable) {
             throw new Error("[Tribute] Cannot bind to " + element.nodeName + ", not contentEditable");
           }
         }
