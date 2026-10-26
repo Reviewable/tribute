@@ -1,0 +1,38 @@
+name: Build and test
+
+on:
+  push:
+    branches: [reviewable-master, release]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install Yarn
+        run: corepack enable && corepack install
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build
+        run: yarn build
+
+      - name: Test in Chrome
+        run: |
+          export CHROME_BIN="$(command -v google-chrome)"
+          test -n "$CHROME_BIN"
+          yarn test-single-run

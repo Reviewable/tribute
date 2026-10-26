@@ -33,6 +33,11 @@ yarn run build
 yarn test
 ```
 
+GitHub Actions builds the library and runs the browser suite on pull requests and pushes
+to `reviewable-master` or `release`. CI uses the runner's installed Chrome via `CHROME_BIN`
+and skips Puppeteer's Chromium download. You can set `CHROME_BIN` locally to use an installed
+Chrome as well; otherwise Karma uses Puppeteer's bundled browser.
+
 ## Contribution Ideas
 
 The major focus that we could use your help with is creating wrappers for different JavaScript frameworks. Some of the ones we are interested in are outlined below. We also see a couple of areas for improving compatibility with different rendering situations, such as in iframes inside of rich text editors.
