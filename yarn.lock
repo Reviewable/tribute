@@ -7010,6 +7010,9 @@ __metadata:
     rollup-plugin-serve: "npm:^1.0.1"
     rollup-plugin-terser: "npm:^5.2.0"
     watchify: "npm:^3.11.1"
+  dependenciesMeta:
+    puppeteer@2.1.1:
+      built: true
   languageName: unknown
   linkType: soft
 
